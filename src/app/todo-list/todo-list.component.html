@@ -1,0 +1,22 @@
+<section class="todoapp">
+  <div id="myDIV" class="header">
+    <h2 style="margin: 5px">My To Do List</h2>
+    <input
+      type="text"
+      #myInput
+      class="new-todo"
+      autofocus
+      placeholder="Title..."
+    />
+    <button (click)="addTodo(myInput.value)" class="addBtn">Add</button>
+  </div>
+
+  <section class="main" *ngIf="getList().length">
+    <ul id="myUL">
+      <li *ngFor="let todo of getList();let i = index" (click)="todo.toggleCompletetion()" [ngClass]="{'checked':todo.done}">
+        {{ todo.getTitle() }}
+          <span class="close" (click)="remove(i)">{{ "\u00D7" }}</span>
+      </li>
+    </ul>
+  </section>
+</section>
